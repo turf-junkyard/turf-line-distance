@@ -2,9 +2,9 @@ var distance = require('turf-distance');
 var point = require('turf-point');
 
 /**
-Measures the length of a LineString in the specified units
+Measures the length of a LineString in the specified units.
 
-@module turf/along
+@module turf/line-distance
 @param {LineString} Line to measure
 @param {String} [units=miles] can be degrees, radians, miles, or kilometers
 @return {Number} Length of the LineString
@@ -43,7 +43,7 @@ var line = {
   }
 }
 
-var length = turf.along(line, 'miles');
+var length = turf.lineDistance(line, 'miles');
 //=length
 */
 module.exports = function (line, units) {
