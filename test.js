@@ -2,10 +2,13 @@ var test = require('tape');
 var fs = require('fs');
 var lineDistance = require('./');
 
-var route = JSON.parse(fs.readFileSync(__dirname + '/fixtures/route.geojson'));
+var route1 = JSON.parse(fs.readFileSync(__dirname + '/fixtures/route1.geojson'));
+var route2 = JSON.parse(fs.readFileSync(__dirname + '/fixtures/route2.geojson'));
 
 test('turf-line-distance', function (t) {
-	console.log(lineDistance, 'miles')
-	
+	t.equal(Math.round(lineDistance(route1, 'miles')), 202);
+	t.true((lineDistance(route2, 'kilometers') - 742) < 1 && 
+			(lineDistance(route2, 'kilometers') - 742) > (-1) );
+
 	t.end();
 });
