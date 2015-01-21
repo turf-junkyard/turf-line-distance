@@ -5,7 +5,6 @@ var point = require('turf-point');
  * Measures the length of a LineString in the specified units.
  *
  * @module turf/line-distance
- * @param {LineString} Line to measure
  *
  * @param {LineString} Line to measure
  * @param {String} [units=miles] can be degrees, radians, miles, or kilometers
