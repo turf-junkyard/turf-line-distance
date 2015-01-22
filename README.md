@@ -1,31 +1,26 @@
-turf-line-distance
----
-[![Build Status](https://travis-ci.org/Turfjs/turf-line-distance.svg?branch=master)](https://travis-ci.org/Turfjs/turf-line-distance)
+# turf-line-distance
+
+[![build status](https://secure.travis-ci.org/Turfjs/turf-line-distance.png)](http://travis-ci.org/Turfjs/turf-line-distance)
+
+turf-line-distance ---
+
+
+### `turf.line-distance (Line, [units=miles])`
 
 Measures the length of a LineString in the specified units.
 
-###Install
 
-```sh
-npm install turf-line-distance
-```
+### Parameters
 
-###Parameters
+| parameter       | type       | description                                               |
+| --------------- | ---------- | --------------------------------------------------------- |
+| `Line`          | LineString | to measure                                                |
+| `[units=miles]` | String     | _optional:_ can be degrees, radians, miles, or kilometers |
 
-|name|description|
-|---|---|
-|line|LineString feature or geometry|
-|units|'miles', 'kilometers', 'degrees' or 'radians'|
 
-###Usage
+### Example
 
 ```js
-lineDistance(line, units)
-```
-
-###Example
-
-```javascript
 var line = {
   "type": "Feature",
   "properties": {},
@@ -58,7 +53,23 @@ var line = {
       ]
     ]
   }
-}
+};
 
-console.log(turf.lineDistance(line, 'miles'));
+var length = turf.lineDistance(line, 'miles');
+//=length
 ```
+
+## Installation
+
+Requires [nodejs](http://nodejs.org/).
+
+```sh
+$ npm install turf-line-distance
+```
+
+## Tests
+
+```sh
+$ npm test
+```
+

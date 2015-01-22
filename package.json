@@ -4,7 +4,8 @@
   "description": "turf-line-distance ---",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "doc": "dox -r < index.js | doxme --readme > README.md"
   },
   "repository": {
     "type": "git",
@@ -26,10 +27,12 @@
   "homepage": "https://github.com/Turfjs/turf-line-distance",
   "devDependencies": {
     "benchmark": "^1.0.0",
-    "tape": "^3.4.0"
+    "tape": "^3.4.0",
+    "dox": "^0.6.1",
+    "doxme": "^1.4.2"
   },
   "dependencies": {
     "turf-distance": "^1.0.0",
-    "turf-point": "^1.2.1"
+    "turf-point": "^2.0.0"
   }
 }
