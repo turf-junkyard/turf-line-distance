@@ -2,13 +2,13 @@ var distance = require('turf-distance');
 var point = require('turf-point');
 
 /**
- * Takes a {@link LineString} feature and measures its length in the specified units.
+ * Takes a line and measures its length in the specified units.
  *
  * @module turf/line-distance
  * @category measurement
- * @param {LineString} Line to measure
+ * @param {Feature<LineString>} line line to measure
  * @param {String} [units=miles] can be degrees, radians, miles, or kilometers
- * @return {Number} length of the LineString
+ * @return {Number} length of the input line
  * @example
  * var line = {
  *   "type": "Feature",
