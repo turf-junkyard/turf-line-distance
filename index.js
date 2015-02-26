@@ -2,7 +2,7 @@ var distance = require('turf-distance');
 var point = require('turf-point');
 
 /**
- * Takes a line and measures its length in the specified units.
+ * Takes a {@link LineString|line} and measures its length in the specified units.
  *
  * @module turf/line-distance
  * @category measurement
