@@ -44,4 +44,4 @@ module.exports = function (line, units) {
     travelled += distance(point(coords[i]), point(coords[i+1]), units);
   }
   return travelled;
-}
+};
