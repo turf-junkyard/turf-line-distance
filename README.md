@@ -5,17 +5,17 @@
 turf-line-distance ---
 
 
-### `turf.line-distance(line, [units=miles])`
+### `turf.line-distance(line, units)`
 
 Takes a LineString|line and measures its length in the specified units.
 
 
 ### Parameters
 
-| parameter       | type                    | description                                               |
-| --------------- | ----------------------- | --------------------------------------------------------- |
-| `line`          | Feature\.\<LineString\> | line to measure                                           |
-| `[units=miles]` | String                  | _optional:_ can be degrees, radians, miles, or kilometers |
+| parameter | type                    | description                                   |
+| --------- | ----------------------- | --------------------------------------------- |
+| `line`    | Feature\.\<LineString\> | line to measure                               |
+| `units`   | String                  | can be degrees, radians, miles, or kilometers |
 
 
 ### Example
