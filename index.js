@@ -33,15 +33,45 @@ var point = require('turf-point');
  * //=length
  */
 
-module.exports = function (line, units) {
-  var coords;
-  if(line.type === 'Feature') coords = line.geometry.coordinates;
-  else if(line.type === 'LineString') coords = line.geometry.coordinates;
-  else throw new Error('input must be a LineString Feature or Geometry');
+module.exports = function lineDistance (line, units) {
+  if(line.type === 'FeatureCollection') {
+    return line.features.reduce(function (memo, feature) {
+      return memo + lineDistance(feature, units);
+    }, 0);
+  }
 
+  var geometry = line.type === 'Feature' ? line.geometry : line
+
+  if(geometry.type === 'LineString') {
+    return length(geometry.coordinates, units);
+  }
+  else if (geometry.type === 'Polygon' || geometry.type === 'MultiLineString') {
+    var d = 0;
+    for (var i = 0; i < geometry.coordinates.length; i++) {
+      d += length(geometry.coordinates[i], units)
+    }
+    return d;
+  }
+  else if (line.type === 'MultiPolygon') {
+    var d = 0;
+    for (var i = 0; i < geometry.coordinates.length; i++) {
+      for (var j = 0; j < geometry.coordinates[i].length; j++){
+        d += length(geometry.coordinates[i][j], units)
+      }
+    }
+    return d;
+  }
+  else throw new Error('input must be a LineString, MultiLineString, ' +
+    'Polygon, or MultiPolygon Feature or Geometry (or a FeatureCollection '+
+    'containing only those types)');
+
+};
+
+function length (coords, units) {
   var travelled = 0;
   for(var i = 0; i < coords.length - 1; i++) {
     travelled += distance(point(coords[i]), point(coords[i+1]), units);
   }
   return travelled;
-};
+}
+
