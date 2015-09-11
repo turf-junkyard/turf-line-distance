@@ -40,8 +40,12 @@ module.exports = function (line, units) {
   else throw new Error('input must be a LineString Feature or Geometry');
 
   var travelled = 0;
-  for(var i = 0; i < coords.length - 1; i++) {
-    travelled += distance(point(coords[i]), point(coords[i+1]), units);
+  var prevCoords = point(coords[0]);
+  var curCoords;
+  for(var i = 1; i < coords.length; i++) {
+    curCoords = point(coords[i]);
+    travelled += distance(prevCoords, curCoords, units);
+    prevCoords = curCoords;
   }
   return travelled;
 };
