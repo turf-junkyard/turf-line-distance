@@ -1,5 +1,4 @@
 var distance = require('turf-distance');
-var point = require('turf-point');
 
 /**
  * Takes a {@link LineString|line} and measures its length in the specified units.
@@ -36,12 +35,13 @@ var point = require('turf-point');
 module.exports = function (line, units) {
   var coords;
   if(line.type === 'Feature') coords = line.geometry.coordinates;
-  else if(line.type === 'LineString') coords = line.geometry.coordinates;
+  else if(line.type === 'LineString') coords = line.coordinates;
   else throw new Error('input must be a LineString Feature or Geometry');
 
   var travelled = 0;
+  var R = distance.getR(units);
   for(var i = 0; i < coords.length - 1; i++) {
-    travelled += distance(point(coords[i]), point(coords[i+1]), units);
+    travelled += distance.arrayDistance(coords[i], coords[i+1], R);
   }
   return travelled;
 };
